@@ -8,9 +8,10 @@ public class Nonogram {
     public static void main(String[] args) {
         try(InputStream in=Thread.currentThread().getContextClassLoader().getResourceAsStream("input.json")){
             NonogramSolver solver = new ObjectMapper().readValue(in, NonogramSolver.class);
-            solver.getBoard().setRow(3, test());
-            solver.solve();
-            solver.printBoard(System.out);
+//            solver.getBoard().setRow(3, test());
+//            solver.solve();
+//            solver.printBoard(System.out);
+            NonogramSolver.getAllSolvedLines(solver.getRows(),solver.getSize());
 
         }
         catch(Exception e){
