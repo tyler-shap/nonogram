@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Board implements IBoard {
     private int size;
-
     private Cell[] cells;
 
     @Override
@@ -27,15 +26,12 @@ public class Board implements IBoard {
     }
 
     @Override
-    public List<Integer> setRow(int rowNum, Cell[] row) {
-        List<Integer> changes = new ArrayList<>();
+    public void setRow(int rowNum, Cell[] row) {
         for(int i=0; i<size; i++) {
-            if(row[i].isConfirmed() && row[i].getValue() != CellValue.UNKNOWN && cells[rowNum*size + i] != row[i]) {
+            if(cells[rowNum*size + i] != row[i]) {
                 cells[rowNum * size + i] = row[i];
-                changes.add(i);
             }
         }
-        return changes;
     }
 
     @Override
@@ -48,15 +44,12 @@ public class Board implements IBoard {
     }
 
     @Override
-    public List<Integer> setCol(int colNum, Cell[] col) {
-        List<Integer> changes = new ArrayList<>();
-        for(int i=0; i<size; i++) {
-            if(col[i].isConfirmed() && col[i].getValue() != CellValue.UNKNOWN && cells[i*size + colNum] != col[i]) {
+    public void setCol(int colNum, Cell[] col) {
+        for (int i = 0; i < size; i++) {
+            if (cells[i * size + colNum] != col[i]) {
                 cells[i * size + colNum] = col[i];
-                changes.add(i);
             }
         }
-        return changes;
     }
 
     @Override

@@ -1,9 +1,8 @@
 package com.butcher.nonogram;
 
 public enum CellValue {
-    FILLED("*"),
-    OPEN("X"),
-    UNKNOWN("U");
+    FILLED(" ■ "),
+    OPEN(" Γ ");
 
     public final String value;
 
