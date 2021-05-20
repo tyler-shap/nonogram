@@ -25,44 +25,11 @@ class NonogramSolverTest {
     }
 
     @Test
-    void solveLine() {
-        Cell[] expected = getAllConfirmedTestRow(5);
-        expected[0].setValue(CellValue.FILLED);
-        expected[1].setValue(CellValue.OPEN);
-        expected[2].setValue(CellValue.FILLED);
-        expected[3].setValue(CellValue.FILLED);
-        expected[4].setValue(CellValue.FILLED);
-
-        int[] input = {1, 3};
-
-        Cell[] result = NonogramSolver.solveLine(input, getTestRow(5));
-
-        //assertArrayEquals(expected, result);
-
-    }
-
-    private Cell[] getTestRow(int size) {
-        Cell[] row = new Cell[size];
-        for (int i = 0; i < row.length; i++) {
-            row[i] = new Cell();
-        }
-        return row;
-    }
-
-    private Cell[] getAllConfirmedTestRow(int size) {
-        Cell[] row = new Cell[size];
-        for (int i = 0; i < row.length; i++) {
-            row[i] = new Cell();
-            row[i].setConfirmed(true);
-        }
-        return row;
-    }
-
-    @Test
     void getAllPermutationsOfRow() {
+        NonogramSolver solver = new NonogramSolver();
         int[] numberOfSpaces = new int[]{0,1,1,0};
         int spacesNeeded = 4;
-        ArrayList<int[]> ans = NonogramSolver.findAllPermutationsOfRow(numberOfSpaces, spacesNeeded);
+        ArrayList<int[]> ans = solver.findAllPermutationsOfRow(numberOfSpaces, spacesNeeded);
         StringBuilder finalString = new StringBuilder();
         for(int[] a : ans) {
             finalString.append('[');
@@ -76,11 +43,12 @@ class NonogramSolverTest {
 
     @Test
     void getAllLinePermutations() {
+        NonogramSolver solver = new NonogramSolver();
         int[][] values = new int[][] {{3},{3,3},{3},{4,1,2},{4,1,1},{3,3},{1,3,1},{1,1,2},{1,1,2},{1,2,3}};
         int boardSize = 10;
 
         ArrayList<ArrayList<int[]>> allLinePermutations =
-                NonogramSolver.getAllSolvedLines(values, boardSize);
+                solver.getAllPossibleLines(values, boardSize);
 
         StringBuilder finalString = new StringBuilder();
         for(ArrayList<int[]> a : allLinePermutations) {

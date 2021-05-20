@@ -7,11 +7,11 @@ public interface IBoard {
 
     Cell[] getRow(int rowNum);
 
-    List<Integer> setRow(int rowNum, Cell[] row);
+    void setRow(int rowNum, Cell[] row);
 
     Cell[] getCol(int colNum);
 
-    List<Integer> setCol(int colNum, Cell[] col);
+    void setCol(int colNum, Cell[] col);
 
     @Override
     String toString();

@@ -1,31 +1,11 @@
 package com.butcher.nonogram;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.InputStream;
-
 public class Nonogram {
-    public static void main(String[] args) {
-        try(InputStream in=Thread.currentThread().getContextClassLoader().getResourceAsStream("input.json")){
-            NonogramSolver solver = new ObjectMapper().readValue(in, NonogramSolver.class);
-//            solver.getBoard().setRow(3, test());
-//            solver.solve();
-//            solver.printBoard(System.out);
-            NonogramSolver.getAllSolvedLines(solver.getRows(),solver.getSize());
-
-        }
-        catch(Exception e){
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static Cell[] test() {
-        Cell[] row = new Cell[15];
-        for (int i = 0; i < row.length; i++) {
-            row[i] = new Cell();
-        }
-        row[3].setValue(CellValue.FILLED);
-        row[3].setConfirmed(true);
-        return row;
+    public static void main(String[] args) throws Exception {
+        NonogramSolver solver = new NonogramSolver();
+        solver.setSize(10);
+        solver.setCols(new int[][] {{7,1}, {6,1}, {6}, {4,1}, {2,1,1}, {5,1}, {5}, {3,1}, {2,1}, {2}});
+        solver.setRows(new int[][] {{5,1}, {6,1}, {4,1}, {4,2}, {3,2}, {3,4}, {1,2}, {3}, {1}, {2,3,1,1}});
+        solver.solve();
     }
 }

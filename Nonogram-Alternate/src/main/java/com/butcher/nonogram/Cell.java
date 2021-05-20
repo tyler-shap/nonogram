@@ -7,10 +7,9 @@ import lombok.Setter;
 @Setter
 public class Cell {
     private CellValue value;
-    private boolean confirmed;
 
     public Cell() {
-        value = CellValue.UNKNOWN;
+        value = CellValue.OPEN;
     }
 
     @Override
